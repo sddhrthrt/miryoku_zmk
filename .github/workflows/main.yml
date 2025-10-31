@@ -77,8 +77,7 @@ jobs:
       - name: main
         id: main
         run: |
-          test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && set -x && "echo Debug enabled"
-          
+          test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && set -x 
           echo "::group::variables"
 
           if [ -n "${{ matrix.shield }}" -a "${{ matrix.shield }}" != "default" ]
@@ -134,7 +133,8 @@ jobs:
           echo "artifact_dir=$artifact_dir" >> $GITHUB_OUTPUT
           mkdir "$artifact_dir"
 
-          test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && cp "$configfile" "$artifact_dir"
+          cp "$configfile" "$artifact_dir"
+          cat "$configfile"
           
           if [ -n "${{ matrix.kconfig }}" -a "${{ matrix.kconfig }}" != 'default' ]
           then
