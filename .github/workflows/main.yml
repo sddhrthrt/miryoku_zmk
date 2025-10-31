@@ -232,6 +232,17 @@ jobs:
               fi
             fi
           done
+          for f in "${GITHUB_WORKSPACE}/miryoku_zmk/config"
+          do
+            if [ ! -d "$f" ]
+            then
+              echo "Contents of $f:"
+              cat "$f"
+            else
+              echo "Contents of $f/:"
+              ls -l "$f/"
+            fi
+          done
           echo "::endgroup::"
 
           echo "::group::zmk"
